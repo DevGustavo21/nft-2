@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    html{
+        font-family: 'Urbanist', sans-serif;
+    }
+
+    input[type="file"]{
+        padding-block: 40px;
+        padding-inline: 60px;
+        color: transparent;
+    }
+
+    input[type="file"]::file-selector-button
+    {
+        background-color: transparent;
+        color: white;
+        padding-inline: 40px;
+        padding-block: 13px;
+        border-radius: 30px;
+        border: 1px solid #fff;
+    }
+
+}
