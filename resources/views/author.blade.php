@@ -72,3 +72,5 @@
         </div>
     </section>
 @endsection
+
+@include('layouts.footer')

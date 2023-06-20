@@ -24,7 +24,8 @@ class ItemController extends Controller
     public function show($name, $item)
     {
         $user = User::with('items.likes')->where('name', $name)->firstOrFail();
-        $item = $user->items()->with('likes')->all()->findOrFail($item);
+        $item = $user->items()->findOrFail($item);
+        $item->load('likes');
         return view('items_detail', ['item' => $item, 'user' => $user]);
     }
 
