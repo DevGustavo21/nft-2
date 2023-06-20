@@ -10,9 +10,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-
+use Intervention\Image\Facades\Image;
+use  Illuminate\Http\JsonResponse;
 class RegisteredUserController extends Controller
 {
     /**
@@ -28,24 +30,33 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'description'=>['required', 'string'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'user_img' => ['required'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $image = $request->file('user_img');
+        $userImg = Str::uuid() . '.' . $image->extension();
+        $serverImage = Image::make($image);
+        $serverImage->fit(1000, 1000);
+
+        $imagePath = public_path('profiles') . '/' . $userImg;
+        $serverImage->save($imagePath);
+
+        $data['user_img'] = $userImg;
+
+        $user = User::create($data);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with('user_img', $userImg);
     }
+
 }

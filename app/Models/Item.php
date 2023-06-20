@@ -9,9 +9,41 @@ class Item extends Model
 {
     use HasFactory;
 
-    public function likes(): \Illuminate\Database\Eloquent\Relations\MorphMany
-    {
-        return $this->morphMany('App\Models\Like', 'likeable');
-    }
-}
+    protected $fillable = [
+        'price',
+        'title',
+        'description',
+        'royalties',
+        'size',
+        'img_item',
+        'category_id',
+        'collection_id',
+        'user_id',
+    ];
 
+
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getTotalLikes(Item $item)
+    {
+        $totalLikes = $item->likes_count;
+        return response()->json(['totalLikes' => $totalLikes]);
+    }
+
+
+}

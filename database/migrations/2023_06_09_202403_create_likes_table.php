@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('likeable_id');
-            $table->string('like_type');
+            $table->integer('likeable_id')->nullable(); // Make likeable_id nullable
+            $table->string('likeable_type');
             $table->timestamps();
         });
+
     }
 
-    /**
+/**
      * Reverse the migrations.
      */
     public function down(): void

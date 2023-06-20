@@ -65,15 +65,10 @@
     <section class="bg-[#0D0D11] w-full text-white pt-16 pb-28 overflow-x-hidden">
         <div class="text-wrapper flex justify-between items-center px-36">
             <h2 class="text-4xl font-bold">Live Auctions</h2>
-            <a href="#" class="cursor-pointer font-bold text-[14px] tracking-wider uppercase explore relative">Explore More</a>
+            <a href="#" class="cursor-pointer font-bold text-[14px] tracking-wider uppercase underline underline-offset-8 decoration-[#E250E5] relative">Explore More</a>
         </div>
 
-        <div class="cards flex gap-x-8 mt-10 w-fit">
-            <x-card-component></x-card-component>
-            <x-card-component></x-card-component>
-            <x-card-component></x-card-component>
-            <x-card-component></x-card-component>
-            <x-card-component></x-card-component>
+        <div class="cards flex justify-center gap-x-8 mt-10 overflow-x-hidden">
             <x-card-component></x-card-component>
         </div>
     </section>
@@ -83,37 +78,25 @@
     <section class="w-full bg-[#14141F] py-20 text-white lg:px-36 md:px-14 sm:px-4">
         <div class="flex justify-between">
             <h2 class="text-4xl font-bold">Popular Collection</h2>
-            <a href="#" class="cursor-pointer font-bold text-[14px] tracking-wider uppercase explore1 explore relative">Explore More</a>
+            <a href="#" class="cursor-pointer font-bold text-[14px] tracking-wider uppercase explore1 explore underline underline-offset-8 decoration-[#E250E5] relative">Explore More</a>
         </div>
 
         <div class="flex flex-wrap lg:gap-x-10 md:gap-x-4 mt-10">
-            <x-collections></x-collections>
-            <x-collections></x-collections>
-            <x-collections></x-collections>
+
+
         </div>
 
         <div class="seller mt-20">
-            <h2 class="text-4xl font-bold">Popular Collection</h2>
+            <h2 class="text-4xl font-bold">Top Sellers</h2>
             <div class="seller-wrapper flex flex-wrap mt-10 gap-x-20 gap-y-8">
                 <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
-                <x-seller></x-seller>
+
             </div>
         </div>
 
         <div class="picks mt-20">
             <h2 class="text-4xl font-bold">Today's Picks</h2>
             <div class="seller-wrapper flex flex-wrap mt-10 gap-3 justify-center">
-                <x-card-component></x-card-component>
-                <x-card-component></x-card-component>
-                <x-card-component></x-card-component>
-                <x-card-component></x-card-component>
-                <x-card-component></x-card-component>
                 <x-card-component></x-card-component>
             </div>
         </div>

@@ -9,9 +9,15 @@ class Like extends Model
 {
     use HasFactory;
 
-    public function likeable(): \Illuminate\Database\Eloquent\Relations\MorphTo
-    {
-        return $this->morphTo();
-    }
+    protected $fillable = [
+        'user_id',
+        'likeable_id',
+        'likeable_type'
+    ];
 
+    public function likeable()
+    {
+        return $this->morphTo('likeable', 'likeable_type', 'likeable_id');
+    }
 }
+

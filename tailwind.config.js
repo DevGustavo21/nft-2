@@ -15,6 +15,17 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+
+        screens: {
+            'sm': '476px',
+            // => @media (min-width: 576px) { ... }
+
+            'md': '760px',
+            // => @media (min-width: 960px) { ... }
+
+            'lg': '1240px',
+            // => @media (min-width: 1440px) { ... }
+        },
     },
 
     plugins: [forms],
